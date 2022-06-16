@@ -1,0 +1,9 @@
+server:
+  port: 8200
+spring:
+  application:
+    name: owner-service
+  flyway:
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
