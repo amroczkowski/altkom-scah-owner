@@ -12,3 +12,9 @@ spring:
     url: ${spring.datasource.url}
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
+
+pl:
+  altkom:
+    scah:
+      dog-service:
+        url: http://localhost:8100

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "urlPath": "/dog",
+    "method": "GET"
+  },
+
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": [
+      {
+        "id": 1,
+        "name": "Joga",
+        "breed": "Labrador",
+        "dateOfBirth": "2020-10-01",
+        "ownerId": 50
+      }
+    ]
+  }
+}
