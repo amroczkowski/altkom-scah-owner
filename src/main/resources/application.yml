@@ -13,6 +13,16 @@ spring:
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
 
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 30000
+      dogClient:
+        connectTimeout: 1000
+        readTimeout: 3000
+
 pl:
   altkom:
     scah:

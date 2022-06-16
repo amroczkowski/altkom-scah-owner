@@ -20,10 +20,11 @@ import pl.altkom.scah.ownerservice.repository.OwnerRepository;
 @Service
 public class OwnerService {
 
+    private final DogClient dogClient;
     private final OwnerRepository ownerRepository;
 
     public List<Owner> getOwners() {
-        final List<Dog> dogs = null; // Get all dogs
+        final List<Dog> dogs = pl.altkom.scah.ownerservice.client.mapper.ResponseMapper.map(dogClient.getDogs());
         final List<pl.altkom.scah.ownerservice.repository.model.Owner> owners = ownerRepository.findAll();
         return ResponseMapper.map(owners, dogs);
     }
@@ -31,7 +32,7 @@ public class OwnerService {
     public Owner getOwner(final Long ownerId) {
         final pl.altkom.scah.ownerservice.repository.model.Owner owner = ownerRepository.findById(ownerId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        final List<Dog> dogs = null; // Get owner dogs
+        final List<Dog> dogs = pl.altkom.scah.ownerservice.client.mapper.ResponseMapper.map(dogClient.getOwnerDogs(owner.getId()));
         return ResponseMapper.map(owner, dogs);
     }
 
@@ -47,7 +48,8 @@ public class OwnerService {
 
         final pl.altkom.scah.ownerservice.repository.model.Owner modifiedOwner = ownerRepository
                 .save(RequestMapper.bind(request, sourceOwner));
-        final List<Dog> dogs = null; // Get owner dogs
+        final List<Dog> dogs = pl.altkom.scah.ownerservice.client.mapper.ResponseMapper
+                .map(dogClient.getOwnerDogs(modifiedOwner.getId()));
         return ResponseMapper.map(modifiedOwner, dogs);
     }
 }
