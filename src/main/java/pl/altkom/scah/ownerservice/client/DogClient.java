@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import pl.altkom.scah.ownerservice.client.model.Dog;
 
-@FeignClient(value = "dogClient", url = "${pl.altkom.scah.dog-service.url}")
+@FeignClient(value = "DOG-SERVICE")
 public interface DogClient {
 
     @GetMapping("/dog/owner/{ownerId}")

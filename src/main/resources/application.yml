@@ -1,5 +1,3 @@
-server:
-  port: 8200
 spring:
   application:
     name: owner-service
@@ -12,19 +10,34 @@ spring:
     url: ${spring.datasource.url}
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
-
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info
 feign:
   client:
     config:
       default:
         connectTimeout: 2000
         readTimeout: 30000
-      dogClient:
+      DOG-SERVICE:
         connectTimeout: 1000
-        readTimeout: 3000
+        readTimeout: 5000
 
-pl:
-  altkom:
-    scah:
-      dog-service:
-        url: http://localhost:8100
+---
+server:
+  port: 8200
+spring:
+  config.activate.on-profile: default
+---
+server:
+  port: 8201
+spring:
+  config.activate.on-profile: instance2
