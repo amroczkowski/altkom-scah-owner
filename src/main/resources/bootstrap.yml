@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: owner-service
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8500
+      fail-fast: true
+      retry:
+        max-attempts: 20

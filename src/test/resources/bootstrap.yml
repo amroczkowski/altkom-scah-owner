@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: owner-service
+  cloud:
+    config:
+      enabled: false
+      fail-fast: false
