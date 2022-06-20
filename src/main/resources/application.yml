@@ -12,3 +12,9 @@ resilience4j:
         wait-duration-in-open-state: 20s
         permitted-number-of-calls-in-half-open-state: 4
         automatic-transition-from-open-to-half-open-enabled: true
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/auth/realms/app-realm
